@@ -30,25 +30,25 @@ const PersonList = () => {
 
   return (
     <section>
-      {/* Essentially just duplicated person component three times*/}
-      <Person />
-      <Person />
-      <Person />
+      {/* Essentially just duplicated(rendered) person component three times*/}
+      <Person person={people[0]} />
+      <Person person={people[1]} />
+      <Person person={people[2]} />
     </section>
   );
 };
 
-const Person = () => {
-  // Person Component
-  // Most of our work will be done here in the Person
-  const url = 'https://randomuser.me/api/portraits/thumb/men/75.jpg';
+// Person Component, Most of our work will be done here in the Person
+const Person = props => {
+  const { img, name, job } = props.person; // Destructuring
+  const url = `https://randomuser.me/api/portraits/thumb/men/${img}.jpg`;
 
   return (
     <div className='person'>
       <img src={url} alt='' />
       <div>
-        <h4>Name</h4>
-        <h4>Job</h4>
+        <h4>{name}</h4>
+        <h4>{job}</h4>
       </div>
     </div>
   );
